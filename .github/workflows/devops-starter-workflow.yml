@@ -36,7 +36,7 @@ jobs:
     - name: Cache SonarCloud packages
       uses: actions/cache@v1
       with:
-        path: ~\sonar\cache
+        path: ~/sonar/cache
         key: ${{ runner.os }}-sonar
         restore-keys: ${{ runner.os }}-sonar
 
@@ -44,7 +44,7 @@ jobs:
       id: cache-sonar-scanner
       uses: actions/cache@v1
       with:
-        path: .\.sonar\scanner
+        path: ./.sonar/scanner
         key: ${{ runner.os }}-sonar-scanner
         restore-keys: ${{ runner.os }}-sonar-scanner
 
@@ -52,7 +52,7 @@ jobs:
       if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
       run: dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
     - name: lista
-      run: ls
+      run: ls ./sonar
     - name: Test and analyze
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
