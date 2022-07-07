@@ -55,8 +55,8 @@ jobs:
       run: |
         ls -a
         ls Application -a
-        ls Application/.sonnar -a
-        ls Application/.sonnar/scanner -a
+        ls Application/.sonar -a
+        ls Application/.sonar/scanner -a
     - name: Test and analyze
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
